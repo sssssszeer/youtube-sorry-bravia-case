@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-plus-jakarta: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Page baseline from DESIGN.md */
+body {
+  background-color: #FFFFFF;
+  color: #363C47;
+  font-family: var(--font-plus-jakarta);
+  font-size: 17px;
+  line-height: 1.72;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Text selection from DESIGN.md */
+::selection {
+  background-color: #DCF3EA; /* primary-soft-2 */
+  color: #065F43; /* primary-ink */
+}
+
+/* Pretty paragraph wrapping from DESIGN.md */
+p {
+  text-wrap: pretty;
+}
+
+/* Balance headline wrapping */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  font-weight: 800;
+}
+
+/* Tabular figures for numbers */
+.tnum {
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus ring from DESIGN.md: 2px emerald outline at 3px offset */
+*:focus-visible {
+  outline: 2px solid #087A58;
+  outline-offset: 3px;
+}
+
+/* Scanline texture for the dark Headline Card */
+.scanline-pattern {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+/* Subtle dot grid for tech inspection preview */
+.dot-grid {
+  background-image: radial-gradient(#E7EAEF 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Ticker marquee animation */
+@keyframes ticker {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 46s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Respect reduced motion from DESIGN.md */
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker {
+    animation: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Smooth motion transitions */
+.smooth-motion {
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
